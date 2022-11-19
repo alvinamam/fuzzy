@@ -34,7 +34,7 @@ class DataController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->ketidakteraturan;
+        return $request;
     }
 
     /**
