@@ -18,9 +18,12 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+// Route::get('/registrasi', [RegisterController::class, 'index']);
+// Route::get('/login', [LoginController::class, 'index']);
+
 
 Route::get('/beranda', [BerandaController::class, 'index']);
-Route::get('/data', [DataController::class, 'index']);
-Route::get('/registrasi', [RegisterController::class, 'index']);
-Route::get('/login', [LoginController::class, 'index']);
 
+Route::get('/data', [DataController::class, 'index']);
+Route::get('/data/create', [DataController::class, 'create']);
+Route::post('/data', [DataController::class, 'store']);

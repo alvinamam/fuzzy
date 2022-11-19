@@ -24,78 +24,7 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <form>
-                        <div class="mb-3">
-                            <label for="RT" class="form-label">RT</label>
-                            <input type="text" class="form-control" id="RT" name="RT" placeholder="Masukan RT">
-                        </div>
-                        <div class="mb-3">
-                            <label for="ketidakteraturan" class="form-label">Ketidakteraturan Bangunan</label>
-                            <input type="password" class="form-control" id="ketidakteraturan" name="ketidakteraturan" placeholder="Masukan persentase ketidakteraturan bangunan">
-                        </div>
-                        <div class="mb-3">
-                            <label for="luaskawasan" class="form-label">luas kawasan tidak sesuai ketentuan</label>
-                            <input type="password" class="form-control" id="luaskawasan" name="luaskawasan" placeholder="Masukan persentase luas kawasan yang memiliki kepadatan tidak sesuai ketentuan">
-                        </div>
-                        <div class="mb-3">
-                            <label for="persyaratanteknis" class="form-label">bangunan tidak memenuhi persyaratan teknis</label>
-                            <input type="password" class="form-control" id="persyaratanteknis" name="persyaratanteknis" placeholder="Masukan persentase bangunan yang tidak memenuhi persyaratan teknis">
-                        </div>
-                        <div class="mb-3">
-                            <label for="keterjangkauan" class="form-label">Keterjangkauan jaringan jalan</label>
-                            <input type="password" class="form-control" id="keterjangkauan" name="keterjangkauan" placeholder="Masukan persentase keterjangkauan jaringan jalan">
-                        </div>
-                        <div class="mb-3">
-                            <label for="kualitaspermukaan" class="form-label">Kualitas permukaan jalan lingkungan</label>
-                            <input type="password" class="form-control" id="kualitaspermukaan" name="kualitaspermukaan" placeholder="Masukan persentase kualitas permukaan jalan lingkungan">
-                        </div>
-                        <div class="mb-3">
-                            <label for="ketersediaanaksesair" class="form-label">Ketersediaan akses aman air minum</label>
-                            <input type="password" class="form-control" id="ketersediaanaksesair" name="ketersediaanaksesair" placeholder="Masukan persentase ketersediaan akses aman air minum">
-                        </div>
-                        <div class="mb-3">
-                            <label for="tidakterpenuhinyaair" class="form-label">tidak terpenuhinya akses air minum</label>
-                            <input type="password" class="form-control" id="tidakterpenuhinyaair" name="tidakterpenuhinyaair" placeholder="Masukan persentase tidak terpenuhinya akses air minum">
-                        </div>
-                        <div class="mb-3">
-                            <label for="ketidakmampuan" class="form-label">Ketidakmampuan mengalirkan limpasan air</label>
-                            <input type="password" class="form-control" id="ketidakmampuan" name="ketidakmampuan" placeholder="Masukan persentase ketidakmampuan mengalirkan limpasan air">
-                        </div>
-                        <div class="mb-3">
-                            <label for="ketidaktersediaandrainase" class="form-label">Ketidaktersediaan drainase</label>
-                            <input type="password" class="form-control" id="ketidaktersediaandrainase" name="ketidaktersediaandrainase" placeholder="Masukan persentase ketidaktersediaan drainase">
-                        </div>
-                        <div class="mb-3">
-                            <label for="kualitaskonstruksi" class="form-label">Kualitas konstruksi drainase</label>
-                            <input type="password" class="form-control" id="kualitaskonstruksi" name="kualitaskonstruksi" placeholder="Masukan persentase kualitas konstruksi drainase">
-                        </div>
-                        <div class="mb-3">
-                            <label for="sistempengolahanair" class="form-label">Sistem pengolahan air tidak sesuai standar teknis</label>
-                            <input type="password" class="form-control" id="sistempengolahanair" name="sistempengolahanair" placeholder="Masukan persentase Sistem pengolahan air yang tidak sesuai standar teknis">
-                        </div>
-                        <div class="mb-3">
-                            <label for="sapraspengolahanair" class="form-label">Sapras pengolahan air tidak sesuai standar teknis</label>
-                            <input type="password" class="form-control" id="sapraspengolahanair" name="sapraspengolahanair" placeholder="Masukan persentase Sapras pengolahan air yang tidak sesuai standar teknis">
-                        </div>
-                        <div class="mb-3">
-                            <label for="sapraspersampahan" class="form-label">sapras persampahan yang tidak sesuai persyaratan teknis</label>
-                            <input type="password" class="form-control" id="sapraspersampahan" name="sapraspersampahan" placeholder="Masukan persentase sapras persampahan yang tidak sesuai persyaratan teknis">
-                        </div>
-                        <div class="mb-3">
-                            <label for="sistempengelolaan" class="form-label">sistem pengelolaan persampahan yang tidak sesuai persyaratan teknis</label>
-                            <input type="password" class="form-control" id="sistempengelolaan" name="sistempengelolaan" placeholder="Masukan persentase sistem pengelolaan persampahan yang tidak sesuai persyaratan teknis">
-                        </div>
-                        <div class="mb-3">
-                            <label for="ketidaktersediaanprasarana" class="form-label">ketidaktersediaan prasarana proteksi kebakaran</label>
-                            <input type="password" class="form-control" id="ketidaktersediaanprasarana" name="ketidaktersediaanprasarana" placeholder="Masukan persentase ketidaktersediaan prasarana proteksi kebakaran">
-                        </div>
-                        <div class="mb-3">
-                            <label for="ketidaktersediaansarana" class="form-label">ketidaktersediaan sarana proteksi kebakaran</label>
-                            <input type="password" class="form-control" id="ketidaktersediaansarana" name="ketidaktersediaansarana" placeholder="Masukan persentase ketidaktersediaan sarana proteksi kebakaran">
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
+                  
                 </div>
             </div>
         </div>

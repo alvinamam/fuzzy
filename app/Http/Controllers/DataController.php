@@ -23,7 +23,7 @@ class DataController extends Controller
      */
     public function create()
     {
-        //
+        return view('data.create');
     }
 
     /**
@@ -34,7 +34,7 @@ class DataController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request->ketidakteraturan;
     }
 
     /**
