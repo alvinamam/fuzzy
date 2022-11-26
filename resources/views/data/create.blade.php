@@ -1,114 +1,109 @@
-<!doctype html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <title>Data</title>
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/datacreate.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300&family=Raleway:wght@300&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-</head>
-
-<body>
-    <nav>
-        <img src="https://kotaku.pu.go.id/content/upload/Media/Pustaka/Material%20Printing%20dan%20Sosialisasi/Logo%20KOTAKU/logo_kotaku_png.png" alt="">
-        <ul>
-            <li><a href="#">Beranda</a></li>
-            <li><a href="#">Tentang</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-        <button>Masuk</button>
-    </nav>
-    <header>
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <form id="inputdata" action="{{url('/data')}}" method="post">
-                        @csrf
-                        <div class="mb-3">
+@extends('layout.master')
+@section('title')
+    Data - Create
+@endsection
+@section('content')
+    <div class="container">
+        <div class="row">
+                <form id="inputdata" action="{{url('/data')}}" method="post">
+                    @csrf
+                    <div class="row">
+                        <div class="col">
                             <label for="RT" class="form-label">RT</label>
-                            <input type="text" class="form-control" id="RT" name="RT" placeholder="Masukan RT">
+                            <input type="text" class="form-control @error('RT') is-invalid @enderror" id="RT" name="RT" placeholder="Masukan RT" >
                         </div>
-                        <div id="input">
-                        <section class="kiri">
-                        <div class="ketidakteraturan">
+                    </div>
+                      
+                    <div class="row">
+                        <div class="col">
                             <label for="ketidakteraturan" class="form-label">Ketidakteraturan Bangunan</label>
-                            <input type="number" min="0" max="100" class="form-control" id="ketidakteraturan" name="ketidakteraturan" placeholder="Masukan persentase ketidakteraturan bangunan">
+                            <input type="number" min="0" max="100" class="form-control @error('ketidakteraturan') is-invalid @enderror" id="ketidakteraturan" name="ketidakteraturan" placeholder="Masukan persentase ketidakteraturan bangunan">
                         </div>
-                        <div class="luaskawasan">
+                        <div class="col">
                             <label for="luaskawasan" class="form-label">luas kawasan tidak sesuai ketentuan</label>
-                            <input type="number" min="0" max="100" class="form-control" id="luaskawasan" name="luaskawasan" placeholder="Masukan persentase luas kawasan yang memiliki kepadatan tidak sesuai ketentuan">
+                            <input type="number" min="0" max="100" class="form-control @error('ketidakteraturan') is-invalid @enderror" id="luaskawasan" name="luaskawasan" placeholder="Masukan persentase luas kawasan yang memiliki kepadatan tidak sesuai ketentuan">
                         </div>
-                        <div class="persyaratanteknis">
+                    </div>
+                    <div class="row">
+                        <div class="col">
                             <label for="persyaratanteknis" class="form-label">bangunan tidak memenuhi persyaratan teknis</label>
-                            <input type="number" min="0" max="100" class="form-control" id="persyaratanteknis" name="persyaratanteknis" placeholder="Masukan persentase bangunan yang tidak memenuhi persyaratan teknis">
+                            <input type="number" min="0" max="100" class="form-control @error('ketidakteraturan') is-invalid @enderror" id="persyaratanteknis" name="persyaratanteknis" placeholder="Masukan persentase bangunan yang tidak memenuhi persyaratan teknis">
                         </div>
-                        <div class="keterjangkauan">
+                        <div class="col">
                             <label for="keterjangkauan" class="form-label">Keterjangkauan jaringan jalan</label>
-                            <input type="number" min="0" max="100" class="form-control" id="keterjangkauan" name="keterjangkauan" placeholder="Masukan persentase keterjangkauan jaringan jalan">
+                            <input type="number" min="0" max="100" class="form-control @error('ketidakteraturan') is-invalid @enderror" id="keterjangkauan" name="keterjangkauan" placeholder="Masukan persentase keterjangkauan jaringan jalan">
                         </div>
-                        <div class="kualitaspermukaan">
+                    </div>
+                    <div class="row">
+                        <div class="col">
                             <label for="kualitaspermukaan" class="form-label">Kualitas permukaan jalan lingkungan</label>
-                            <input type="number" min="0" max="100" class="form-control" id="kualitaspermukaan" name="kualitaspermukaan" placeholder="Masukan persentase kualitas permukaan jalan lingkungan">
+                            <input type="number" min="0" max="100" class="form-control @error('ketidakteraturan') is-invalid @enderror" id="kualitaspermukaan" name="kualitaspermukaan" placeholder="Masukan persentase kualitas permukaan jalan lingkungan">
                         </div>
-                        <div class="ketersediaanaksesair">
+                        <div class="col">
                             <label for="ketersediaanaksesair" class="form-label">Ketersediaan akses aman air minum</label>
-                            <input type="number" min="0" max="100" class="form-control" id="ketersediaanaksesair" name="ketersediaanaksesair" placeholder="Masukan persentase ketersediaan akses aman air minum">
+                            <input type="number" min="0" max="100" class="form-control @error('ketidakteraturan') is-invalid @enderror" id="ketersediaanaksesair" name="ketersediaanaksesair" placeholder="Masukan persentase ketersediaan akses aman air minum">
                         </div>
-                        <div class="tidakterpenuhinyaair">
+                    </div>
+                    <div class="row">
+                        <div class="col">
                             <label for="tidakterpenuhinyaair" class="form-label">tidak terpenuhinya akses air minum</label>
-                            <input type="number" min="0" max="100" class="form-control" id="tidakterpenuhinyaair" name="tidakterpenuhinyaair" placeholder="Masukan persentase tidak terpenuhinya akses air minum">
+                            <input type="number" min="0" max="100" class="form-control @error('ketidakteraturan') is-invalid @enderror" id="tidakterpenuhinyaair" name="tidakterpenuhinyaair" placeholder="Masukan persentase tidak terpenuhinya akses air minum">
                         </div>
-                        <div class="ketidakmampuan">
+                        <div class="col">
                             <label for="ketidakmampuan" class="form-label">Ketidakmampuan mengalirkan limpasan air</label>
-                            <input type="number" min="0" max="100" class="form-control" id="ketidakmampuan" name="ketidakmampuan" placeholder="Masukan persentase ketidakmampuan mengalirkan limpasan air">
+                            <input type="number" min="0" max="100" class="form-control @error('ketidakteraturan') is-invalid @enderror" id="ketidakmampuan" name="ketidakmampuan" placeholder="Masukan persentase ketidakmampuan mengalirkan limpasan air">
                         </div>
-                        </section>
-                        <section class="kanan">
-                        <div class="ketidaktersediaandrainase">
+                    </div>
+                   <div class="row">
+                        <div class="col">
                             <label for="ketidaktersediaandrainase" class="form-label">Ketidaktersediaan drainase</label>
-                            <input type="number" min="0" max="100" class="form-control" id="ketidaktersediaandrainase" name="ketidaktersediaandrainase" placeholder="Masukan persentase ketidaktersediaan drainase">
+                            <input type="number" min="0" max="100" class="form-control @error('ketidakteraturan') is-invalid @enderror" id="ketidaktersediaandrainase" name="ketidaktersediaandrainase" placeholder="Masukan persentase ketidaktersediaan drainase">
                         </div>
-                        <div class="kualitaskonstruksi">
+                        <div class="col">
                             <label for="kualitaskonstruksi" class="form-label">Kualitas konstruksi drainase</label>
-                            <input type="number" min="0" max="100" class="form-control" id="kualitaskonstruksi" name="kualitaskonstruksi" placeholder="Masukan persentase kualitas konstruksi drainase">
+                            <input type="number" min="0" max="100" class="form-control @error('ketidakteraturan') is-invalid @enderror" id="kualitaskonstruksi" name="kualitaskonstruksi" placeholder="Masukan persentase kualitas konstruksi drainase">
                         </div>
-                        <div class="sistempengolahanair">
+                   </div>
+                   <div class="row">
+                        <div class="col">
                             <label for="sistempengolahanair" class="form-label">Sistem pengolahan air tidak sesuai standar teknis</label>
-                            <input type="number" min="0" max="100" class="form-control" id="sistempengolahanair" name="sistempengolahanair" placeholder="Masukan persentase Sistem pengolahan air yang tidak sesuai standar teknis">
+                            <input type="number" min="0" max="100" class="form-control @error('ketidakteraturan') is-invalid @enderror" id="sistempengolahanair" name="sistempengolahanair" placeholder="Masukan persentase Sistem pengolahan air yang tidak sesuai standar teknis">
                         </div>
-                        <div class="sapraspengolahanair">
+                        <div class="col">
                             <label for="sapraspengolahanair" class="form-label">Sapras pengolahan air tidak sesuai standar teknis</label>
-                            <input type="number" min="0" max="100" class="form-control" id="sapraspengolahanair" name="sapraspengolahanair" placeholder="Masukan persentase Sapras pengolahan air yang tidak sesuai standar teknis">
+                            <input type="number" min="0" max="100" class="form-control @error('ketidakteraturan') is-invalid @enderror" id="sapraspengolahanair" name="sapraspengolahanair" placeholder="Masukan persentase Sapras pengolahan air yang tidak sesuai standar teknis">
                         </div>
-                        <div class="sapraspersampahan">
+                   </div>
+                   <div class="row">
+                       <div class="col">
                             <label for="sapraspersampahan" class="form-label">sapras persampahan yang tidak sesuai persyaratan teknis</label>
-                            <input type="number" min="0" max="100" class="form-control" id="sapraspersampahan" name="sapraspersampahan" placeholder="Masukan persentase sapras persampahan yang tidak sesuai persyaratan teknis">
-                        </div>
-                        <div class="sistempengelolaan">
+                            <input type="number" min="0" max="100" class="form-control @error('ketidakteraturan') is-invalid @enderror" id="sapraspersampahan" name="sapraspersampahan" placeholder="Masukan persentase sapras persampahan yang tidak sesuai persyaratan teknis">
+                    </div>
+                    <div class="col">
                             <label for="sistempengelolaan" class="form-label">sistem pengelolaan persampahan yang tidak sesuai persyaratan teknis</label>
-                            <input type="number" min="0" max="100" class="form-control" id="sistempengelolaan" name="sistempengelolaan" placeholder="Masukan persentase sistem pengelolaan persampahan yang tidak sesuai persyaratan teknis">
+                            <input type="number" min="0" max="100" class="form-control @error('ketidakteraturan') is-invalid @enderror" id="sistempengelolaan" name="sistempengelolaan" placeholder="Masukan persentase sistem pengelolaan persampahan yang tidak sesuai persyaratan teknis">
+                    </div>
+                   </div>
+                   <div class="row">
+                    <div class="col">
+                        <label for="ketidaktersediaanprasarana" class="form-label">ketidaktersediaan prasarana proteksi kebakaran</label>
+                        <input type="number" min="0" max="100" class="form-control @error('ketidakteraturan') is-invalid @enderror" id="ketidaktersediaanprasarana" name="ketidaktersediaanprasarana" placeholder="Masukan persentase ketidaktersediaan prasarana proteksi kebakaran">
+                    </div>
+                    <div class="col">
+                        <label for="ketidaktersediaansarana" class="form-label">ketidaktersediaan sarana proteksi kebakaran</label>
+                        <input type="number" min="0" max="100" class="form-control @error('ketidakteraturan') is-invalid @enderror" id="ketidaktersediaansarana" name="ketidaktersediaansarana" placeholder="Masukan persentase ketidaktersediaan sarana proteksi kebakaran">
+                    </div>
+                   </div>
+                    <div class="row">
+                        <div class="col mt-2">
+                            <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
-                        <div class="ketidaktersediaanprasarana">
-                            <label for="ketidaktersediaanprasarana" class="form-label">ketidaktersediaan prasarana proteksi kebakaran</label>
-                            <input type="number" min="0" max="100" class="form-control" id="ketidaktersediaanprasarana" name="ketidaktersediaanprasarana" placeholder="Masukan persentase ketidaktersediaan prasarana proteksi kebakaran">
-                        </div>
-                        <div class="ketidaktersediaansarana">
-                            <label for="ketidaktersediaansarana" class="form-label">ketidaktersediaan sarana proteksi kebakaran</label>
-                            <input type="number" min="0" max="100" class="form-control" id="ketidaktersediaansarana" name="ketidaktersediaansarana" placeholder="Masukan persentase ketidaktersediaan sarana proteksi kebakaran">
-                        </div>
-                        </section>
-                        
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                </div>
+                    </div>
+                    
+                    
+                   
+                </form>
             </div>
         </div>
-    </header>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-</body>
-
-</html>
+    </div>
+@endsection

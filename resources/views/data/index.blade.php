@@ -1,35 +1,78 @@
-<!doctype html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <title>Data</title>
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300&family=Raleway:wght@300&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-</head>
-
-<body>
-    <nav>
-        <img src="https://kotaku.pu.go.id/content/upload/Media/Pustaka/Material%20Printing%20dan%20Sosialisasi/Logo%20KOTAKU/logo_kotaku_png.png" alt="">
-        <ul>
-            <li><a href="#">Beranda</a></li>
-            <li><a href="#">Tentang</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-        <button>Masuk</button>
-    </nav>
-    <header>
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                  
-                </div>
-            </div>
+@extends('layout.master')
+@section('title')
+    Data
+@endsection
+@section('content')
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <a href=" {{ url('/data/create') }}" class="btn btn-primary">Tambah Data</a>
         </div>
-    </header>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-</body>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="table-light">
+            ...         <th>No</th>
+                        <th>RT</th>
+                        <th>Ketidakteraturan</th>
+                        <th>LuasKawasan</th>
+                        <th>persyaratanteknis</th>
+                        <th>keterjangkauan</th>
+                        <th>kualitaspermukaan</th>
+                        <th>ketersediaanaksesair</th>
+                        <th>tidakterpenuhinyaair</th>
+                        <th>ketidakmampuan</th>
+                        <th>ketidaktersediaandrainase</th>
+                        <th>kualitaskonstruksi</th>
+                        <th>sistempengolahanair</th>
+                        <th>sapraspengolahanair</th>
+                        <th>sapraspersampahan</th>
+                        <th>sistempengelolaan</th>
+                        <th>ketidaktersediaanprasarana</th>
+                        <th>ketidaktersediaansarana</th>
+                        <th>aksi</th>
+                    </thead>
+                    <tbody class="table-light">
+                        @foreach ($datas as $data)
+                        
+                        <tr>
+                            <td>{{$data->id}}</td>
+                            <td>{{$data->RT}}</td>
+                            <td>{{$data->ketidakteraturan}}</td>
+                            <td>{{$data->luaskawasan}}</td>
+                            <td>{{$data->persyaratanteknis}}</td>
+                            <td>{{$data->keterjangkauan}}</td>
+                            <td>{{$data->kualitaspermukaan}}</td>
+                            <td>{{$data->ketersediaanaksesair}}</td>
+                            <td>{{$data->tidakterpenuhinyaair}}</td>
+                            <td>{{$data->ketidakmampuan}}</td>
+                            <td>{{$data->ketidaktersediaandrainase}}</td>
+                            <td>{{$data->kualitaskonstruksi}}</td>
+                            <td>{{$data->sistempengolahanair}}</td>
+                            <td>{{$data->sapraspengolahanair}}</td>
+                            <td>{{$data->sapraspersampahan}}</td>
+                            <td>{{$data->sistempengelolaan}}</td>
+                            <td>{{$data->ketidaktersediaanprasarana}}</td>
+                            <td>{{$data->ketidaktersediaansarana}}</td>
+                            <td>
+                                <a href="{{ url('/data/'.$data->id.'/edit')}}" class="btn btn-success">EDIT</a>
+                                <form action="{{ url('/data/'.$data->id) }}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-danger">DELETE</button>
+                                </form>
+                            </td>
 
-</html>
+                        </tr>
+            @endforeach
+                    </tbody>
+                </table>
+            </div>
+       
+        </div>
+    </div>
+</div>
+@endsection
+    
