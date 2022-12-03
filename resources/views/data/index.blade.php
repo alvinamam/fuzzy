@@ -6,8 +6,11 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <a href=" {{ url('/data/create') }}" class="btn btn-primary">Tambah Data</a>
-        </div>
+            <a href=" {{ url('/data/create') }} " class="btn btn-primary">Tambah Data</a>
+        
+        
+            <a href=" {{ url('/fuzzyfikasi') }} " class="btn btn-primary">hasil</a>
+            </div>
     </div>
     <div class="row">
         <div class="col">
@@ -15,6 +18,7 @@
                 <table class="table">
                     <thead class="table-light">
             ...         <th>No</th>
+                        <th>fuzzy</th>
                         <th>RT</th>
                         <th>Ketidakteraturan</th>
                         <th>LuasKawasan</th>
@@ -39,6 +43,7 @@
                         
                         <tr>
                             <td>{{$data->id}}</td>
+                            <td><a href="{{url('fuzzy-main/'. $data->id)}}" class="btn btn-info">HITUNG</a></td>
                             <td>{{$data->RT}}</td>
                             <td>{{$data->ketidakteraturan}}</td>
                             <td>{{$data->luaskawasan}}</td>
