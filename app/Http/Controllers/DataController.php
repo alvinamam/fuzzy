@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Data;
+use App\models\Ringan;
+use App\models\Sedang;
+use App\models\Berat;
 use Illuminate\Http\Request;
 
 class DataController extends Controller
@@ -172,21 +175,26 @@ class DataController extends Controller
         return redirect('/data');
     }
 
-    public function fuzzyfikasi_turun($x, $b, $a)
+    public function fuzzyfikasi_turun($x)
     {
+        $a = 25; $b = 50;
         if($x >= $b){
             $hasil = 0;
+            return $hasil;
         }
         elseif(($a < $x) && ($x < $b)){
             $hasil = ($b - $x) / ($b - $a);
+            return $hasil;
         }else{
             $hasil = 1;
+            return $hasil;
         }
     }
     
-    public function fuzzyfikasi_segitiga($x, $b, $a, $c)
+    public function fuzzyfikasi_segitiga($x)
     {
-        if(($x <= $a) && ($x >= $c)){
+        $a = 25; $b = 50;
+        if(($x <= $a) && ($x >= $b)){
             $hasil = 0;
         }
         elseif(($a <= $x) && ($x <= $b)){
@@ -195,9 +203,11 @@ class DataController extends Controller
         else{
             $hasil = 1;
         }
+        return $hasil;
     }
-    public function fuzzyfikasi_naik($x, $a, $b)
+    public function fuzzyfikasi_naik($x)
     {
+        $a = 25; $b = 50;
         if($x <= $a){
             $hasil = 0;
         }
@@ -207,5 +217,98 @@ class DataController extends Controller
         else{
             $hasil = 1;
         }
+        return $hasil;
+    }
+    public function main()
+    {
+        $berat = $this->fuzzyfikasi_naik(45);
+        $sedang = $this->fuzzyfikasi_segitiga(45);
+        $ringan = $this->fuzzyfikasi_turun(45);
+        $hasil = [
+            $berat, $sedang, $ringan
+        ];
+        return $hasil;
+        $datas = Data::all(); // mengambil data
+        foreach ($datas as $data){}
+        $ringan_ketidakteraturan = $this->fuzzyfikasi_turun($data->ketidakteraturan); //memasukan data
+        $sedang_ketidakteraturan = $this->fuzzyfikasi_segitiga($data->ketidakteraturan);
+        $berat_ketidakteratuaran= $this->fuzzyfikasi_naik($data->ketidakteraturan);
+
+        $ringan_ketidakteraturan = $this->fuzzyfikasi_turun($data->luaskawasan);
+        $sedang_ketidakteraturan = $this->fuzzyfikasi_segitiga($data->luaskawasan);
+        $berat_ketidakteratuaran= $this->fuzzyfikasi_naik($data->luaskawasan);
+        
+        $ringan_ketidakteraturan = $this->fuzzyfikasi_turun($data->persyaratanteknis);
+        $sedang_ketidakteraturan = $this->fuzzyfikasi_segitiga($data->persyaratanteknis);
+        $berat_ketidakteratuaran= $this->fuzzyfikasi_naik($data->persyaratanteknis);
+
+        $ringan_ketidakteraturan = $this->fuzzyfikasi_turun($data->keterjangkauan);
+        $sedang_ketidakteraturan = $this->fuzzyfikasi_segitiga($data->keterjangkauan);
+        $berat_ketidakteratuaran= $this->fuzzyfikasi_naik($data->keterjangkauan);
+
+        $ringan_ketidakteraturan = $this->fuzzyfikasi_turun($data->kualitaspermukaan);
+        $sedang_ketidakteraturan = $this->fuzzyfikasi_segitiga($data->kualitaspermukaan);
+        $berat_ketidakteratuaran= $this->fuzzyfikasi_naik($data->kualitaspermukaan);
+
+        $ringan_ketidakteraturan = $this->fuzzyfikasi_turun($data->ketersediaanaksesair);
+        $sedang_ketidakteraturan = $this->fuzzyfikasi_segitiga($data->ketersediaanaksesair);
+        $berat_ketidakteratuaran= $this->fuzzyfikasi_naik($data->ketersediaanaksesair);
+
+        $ringan_ketidakteraturan = $this->fuzzyfikasi_turun($data->tidakterpenuhinyaair);
+        $sedang_ketidakteraturan = $this->fuzzyfikasi_segitiga($data->tidakterpenuhinyaair);
+        $berat_ketidakteratuaran= $this->fuzzyfikasi_naik($data->tidakterpenuhinyaair);
+
+        $ringan_ketidakteraturan = $this->fuzzyfikasi_turun($data->ketidakmampuan);
+        $sedang_ketidakteraturan = $this->fuzzyfikasi_segitiga($data->ketidakmampuan);
+        $berat_ketidakteratuaran= $this->fuzzyfikasi_naik($data->ketidakmampuan);
+
+        $ringan_ketidakteraturan = $this->fuzzyfikasi_turun($data->ketidaktersediaandrainase);
+        $sedang_ketidakteraturan = $this->fuzzyfikasi_segitiga($data->ketidaktersediaandrainase);
+        $berat_ketidakteratuaran= $this->fuzzyfikasi_naik($data->ketidaktersediaandrainase);
+
+        $ringan_ketidakteraturan = $this->fuzzyfikasi_turun($data->kualitaskonstruksi);
+        $sedang_ketidakteraturan = $this->fuzzyfikasi_segitiga($data->kualitaskonstruksi);
+        $berat_ketidakteratuaran= $this->fuzzyfikasi_naik($data->kualitaskonstruksi);
+
+        $ringan_ketidakteraturan = $this->fuzzyfikasi_turun($data->sistempengolahanair);
+        $sedang_ketidakteraturan = $this->fuzzyfikasi_segitiga($data->sistempengolahanair);
+        $berat_ketidakteratuaran= $this->fuzzyfikasi_naik($data->sistempengolahanair);
+
+        $ringan_ketidakteraturan = $this->fuzzyfikasi_turun($data->sapraspengolahanair);
+        $sedang_ketidakteraturan = $this->fuzzyfikasi_segitiga($data->sapraspengolahanair);
+        $berat_ketidakteratuaran= $this->fuzzyfikasi_naik($data->sapraspengolahanair);
+
+        $ringan_ketidakteraturan = $this->fuzzyfikasi_turun($data->sapraspersampahan);
+        $sedang_ketidakteraturan = $this->fuzzyfikasi_segitiga($data->sapraspersampahan);
+        $berat_ketidakteratuaran= $this->fuzzyfikasi_naik($data->sapraspersampahan);
+
+        $ringan_ketidakteraturan = $this->fuzzyfikasi_turun($data->sistempengelolaan);
+        $sedang_ketidakteraturan = $this->fuzzyfikasi_segitiga($data->sistempengelolaan);
+        $berat_ketidakteratuaran= $this->fuzzyfikasi_naik($data->sistempengelolaan);
+
+        $ringan_ketidakteraturan = $this->fuzzyfikasi_turun($data->ketidaktersediaanprasarana);
+        $sedang_ketidakteraturan = $this->fuzzyfikasi_segitiga($data->ketidaktersediaanprasarana);
+        $berat_ketidakteratuaran= $this->fuzzyfikasi_naik($data->ketidaktersediaanprasarana);
+
+        $ringan_ketidakteraturan = $this->fuzzyfikasi_turun($data->ketidaktersediaansarana);
+        $sedang_ketidakteraturan = $this->fuzzyfikasi_segitiga($data->ketidaktersediaansarana);
+        $berat_ketidakteratuaran= $this->fuzzyfikasi_naik($data->ketidaktersediaansarana);
+
+        Ringan::create([
+            'data_id' => $data->id,
+            'ketidakteraturan' => $ringan_ketidakteraturan // menambahkan data ke database
+        ]);
+
+        Sedang::create([
+            'data_id' => $data->id,
+            'ketidakteraturan' => $sedang_ketidakteraturan
+        ]);
+
+        Berat::create([
+            'data_id' => $data->id,
+            'ketidakteraturan' => $berat_ketidakteraturan
+        ]);
+
+        //return $ringan;
     }
 }

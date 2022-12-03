@@ -30,3 +30,4 @@ Route::post('/data', [DataController::class, 'store']);
 Route::get('/data/{id}/edit', [DataController::class, 'edit']);
 Route::put('/data/{id}', [DataController::class, 'update']);
 Route::delete('/data/{id}', [DataController::class, 'destroy']);
+Route::get('/test', [DataController::class, 'main']);
