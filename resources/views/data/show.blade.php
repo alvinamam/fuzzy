@@ -7,6 +7,7 @@
     <div class="row">
         <div class="col">
             <a href=" {{ URL::previous() }}" class="btn btn-danger">Kembali</a>
+            <a href=" {{ url('/query') }}" class="btn btn-info">Query</a>
             </div>
     </div>
     <div class="row">
@@ -15,7 +16,7 @@
             <div class="table-responsive">
                 <table class="table">
                     <thead class="table-light">
-            ...         <th>No</th>
+                     <th>No</th>
                         <th>RT</th>
                         <th>Ketidakteraturan</th>
                         <th>LuasKawasan</th>
@@ -39,7 +40,7 @@
                         @foreach ($ringan as $data)
                         
                         <tr>
-                            <td>{{$data->id}}</td>
+                            <td>{{$loop->iteration}}</td>
                             <td>{{$data->data->RT}}</td> 
                             <td>{{$data->ketidakteraturan}}</td>
                             <td>{{$data->luaskawasan}}</td>
@@ -59,7 +60,7 @@
                             <td>{{$data->ketidaktersediaansarana}}</td>
                             <td>
                                 
-                                <form action="{{ url('/data/'.$data->id) }}" method="post">
+                                <form action="{{ url('/data/'.$loop->iteration) }}" method="post">
                                     @csrf
                                     @method('delete')
                                     <button type="submit" class="btn btn-danger">DELETE</button>
@@ -104,7 +105,7 @@
                         @foreach ($sedang as $data)
                         
                         <tr>
-                            <td>{{$data->id}}</td>
+                            <td>{{$loop->iteration}}</td>
                             <td>{{$data->data->RT}}</td> 
                             <td>{{$data->ketidakteraturan}}</td>
                             <td>{{$data->luaskawasan}}</td>
@@ -147,6 +148,7 @@
                     <thead class="table-light">
                      <th>No</th>
                         <th>RT</th>
+                        <th>Rata-Rata</th>
                         <th>Ketidakteraturan</th>
                         <th>LuasKawasan</th>
                         <th>persyaratanteknis</th>
@@ -169,8 +171,9 @@
                         @foreach ($berat as $data)
                         
                         <tr>
-                            <td>{{$data->id}}</td>
+                            <td>{{$loop->iteration}}</td>
                             <td>{{$data->data->RT}}</td> 
+                            <td>{{$data->rata}}</td>
                             <td>{{$data->ketidakteraturan}}</td>
                             <td>{{$data->luaskawasan}}</td>
                             <td>{{$data->persyaratanteknis}}</td>

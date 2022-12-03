@@ -42,7 +42,7 @@
                         @foreach ($datas as $data)
                         
                         <tr>
-                            <td>{{$data->id}}</td>
+                            <td>{{$loop->iteration}}</td>
                             <td><a href="{{url('fuzzy-main/'. $data->id)}}" class="btn btn-info">HITUNG</a></td>
                             <td>{{$data->RT}}</td>
                             <td>{{$data->ketidakteraturan}}</td>

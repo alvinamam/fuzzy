@@ -3,7 +3,7 @@
     <title>@yield('title')</title>
     @include('layout.header')
 </head>
-<body>
+<body style="background-image: url('image/background.png' )">
     @include('layout.navbar')
     <header>
         @yield('content')

@@ -422,6 +422,8 @@ class DataController extends Controller
             'ketidaktersediaansarana' => $sedang_ketidaktersediaansarana,
         ]);
 
+$rata = ($berat_ketidakteraturan + $berat_luaskawasan + $berat_persyaratanteknis + $berat_keterjangkauan + $berat_kualitaspermukaan + $berat_ketersediaanaksesair + $berat_tidakterpenuhinyaair + $berat_ketidakmampuan + $berat_ketidaktersediaandrainase + $berat_kualitaskonstruksi + $berat_sistempengolahanair + $berat_sapraspengolahanair + $berat_sapraspersampahan + $berat_sistempengelolaan + $berat_ketidaktersediaanprasarana + $berat_ketidaktersediaansarana) / 16;
+
         Berat::create([
             'data_id' => $data->id,
             'ketidakteraturan' => $berat_ketidakteraturan,
@@ -440,6 +442,7 @@ class DataController extends Controller
             'sistempengelolaan' => $berat_sistempengelolaan,
             'ketidaktersediaanprasarana' => $berat_ketidaktersediaanprasarana,
             'ketidaktersediaansarana' => $berat_ketidaktersediaansarana,
+            'rata' => $rata
         ]);
         return redirect()->back();
     }
@@ -451,8 +454,9 @@ class DataController extends Controller
 
         return view('data.show', compact('ringan', 'sedang', 'berat'));
     }
-    public function query(){
-        $berat == Berat::all();
-        
+    public function indexQuery()
+    {
+        $berat = Berat::orderBy('rata', 'desc')->get();
+        return view('data/query', compact('berat'));
     }
 }
