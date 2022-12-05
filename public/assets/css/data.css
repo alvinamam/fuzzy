@@ -7,7 +7,7 @@
 	
 }
 
-header{
+body{
 	width: 100%;
 	background-position: center;
 	height: 100vh;
@@ -49,14 +49,14 @@ ul li a:hover{
 	text-decoration-color: rgba(44,46,150,1.00);
 	color: rgba(234,153,31,1.00);
 }
-nav button{
+nav .button{
 	background-color: rgba(6,19,26,1.00);
 	border-radius: 20px;
 	color: white;
 	border-style: none;
 	width: 90px;
 }
-nav button:hover{
+nav .button:hover{
 	background-color: rgba(44,46,150,1.00);
 	color: rgba(234,153,31,1.00);
 		
@@ -130,9 +130,4 @@ nav button:hover{
 
 
 
-section{
-	background-color: rgba(4,16,23,0.90);
-	text-align: center;
-	padding: 50px 80px;
-	color: lightgrey
-}
+ 

@@ -40,7 +40,7 @@
                     </thead>
                     <tbody class="table-light">
                         @foreach ($datas as $data)
-                        
+                         
                         <tr>
                             <td>{{$loop->iteration}}</td>
                             <td><a href="{{url('fuzzy-main/'. $data->id)}}" class="btn btn-info">HITUNG</a></td>
@@ -62,11 +62,11 @@
                             <td>{{$data->ketidaktersediaanprasarana}}</td>
                             <td>{{$data->ketidaktersediaansarana}}</td>
                             <td>
-                                <a href="{{ url('/data/'.$data->id.'/edit')}}" class="btn btn-success">EDIT</a>
+                                <a href="{{ url('/data/'.$data->id.'/edit')}}" class="btn btn-success"><i class="fa-regular fa-pen-to-square"></i></a>
                                 <form action="{{ url('/data/'.$data->id) }}" method="post">
                                     @csrf
                                     @method('delete')
-                                    <button type="submit" class="btn btn-danger">DELETE</button>
+                                    <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
                                 </form>
                             </td>
 

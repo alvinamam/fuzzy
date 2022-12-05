@@ -13,7 +13,7 @@
                             <input type="text" class="form-control @error('RT') is-invalid @enderror" id="RT" name="RT" placeholder="Masukan RT" >
                         </div>
                     </div>
-                      
+                       
                     <div class="row">
                         <div class="col">
                             <label for="ketidakteraturan" class="form-label">Ketidakteraturan Bangunan</label>

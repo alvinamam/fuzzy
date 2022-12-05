@@ -23,7 +23,12 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/beranda', [BerandaController::class, 'index']);
-
+Route::get('/kontak', function () {
+return view('kontak.index');
+ });
+Route::get('/tentang', function () {
+    return view('tentang.index');
+ });
 Route::get('/data', [DataController::class, 'index']);
 Route::get('/data/create', [DataController::class, 'create']);
 Route::post('/data', [DataController::class, 'store']);
@@ -34,3 +39,10 @@ Route::delete('/data/{id}', [DataController::class, 'destroy']);
 Route::get('fuzzy-main/{data}', [DataController::class,'main1']);
 Route::get('fuzzyfikasi', [DataController::class, 'indexHasil']);
 Route::get('query', [DataController::class, 'indexQuery']);
+Route::get('/login', function () {
+   return view('login.index');
+    });
+Route::get('/register', function () {
+   return view('register.index');
+    });
+     

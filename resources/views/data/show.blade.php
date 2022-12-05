@@ -87,7 +87,7 @@
                         <th>LuasKawasan</th>
                         <th>persyaratanteknis</th>
                         <th>keterjangkauan</th>
-                        <th>kualitaspermukaan</th>
+                        <th>kualitaspermukaan</th> 
                         <th>ketersediaanaksesair</th>
                         <th>tidakterpenuhinyaair</th>
                         <th>ketidakmampuan</th>

@@ -222,7 +222,7 @@ class DataController extends Controller
         return $hasil;
     }
     public function main()
-    
+     
 
     {
         $berat = $this->fuzzyfikasi_naik(45);
