@@ -34,7 +34,7 @@
                         <th>sistempengelolaan</th>
                         <th>ketidaktersediaanprasarana</th>
                         <th>ketidaktersediaansarana</th>
-                        <th>aksi</th>
+                        
                     </thead>
                     <tbody class="table-light">
                         @foreach ($ringan as $data)
@@ -60,11 +60,7 @@
                             <td>{{$data->ketidaktersediaansarana}}</td>
                             <td>
                                 
-                                <form action="{{ url('/data/'.$loop->iteration) }}" method="post">
-                                    @csrf
-                                    @method('delete')
-                                    <button type="submit" class="btn btn-danger">DELETE</button>
-                                </form>
+                                
                             </td>
 
                         </tr>
@@ -99,7 +95,7 @@
                         <th>sistempengelolaan</th>
                         <th>ketidaktersediaanprasarana</th>
                         <th>ketidaktersediaansarana</th>
-                        <th>aksi</th>
+                        
                     </thead>
                     <tbody class="table-light">
                         @foreach ($sedang as $data)
@@ -125,11 +121,7 @@
                             <td>{{$data->ketidaktersediaansarana}}</td>
                             <td>
                                 
-                                <form action="{{ url('/data/'.$data->id) }}" method="post">
-                                    @csrf
-                                    @method('delete')
-                                    <button type="submit" class="btn btn-danger">DELETE</button>
-                                </form>
+                               
                             </td>
 
                         </tr>
@@ -165,7 +157,7 @@
                         <th>sistempengelolaan</th>
                         <th>ketidaktersediaanprasarana</th>
                         <th>ketidaktersediaansarana</th>
-                        <th>aksi</th>
+                        
                     </thead>
                     <tbody class="table-light">
                         @foreach ($berat as $data)
@@ -192,11 +184,7 @@
                             <td>{{$data->ketidaktersediaansarana}}</td>
                             <td>
                                 
-                                <form action="{{ url('/data/'.$data->id) }}" method="post">
-                                    @csrf
-                                    @method('delete')
-                                    <button type="submit" class="btn btn-danger">DELETE</button>
-                                </form>
+                               
                             </td>
 
                         </tr>

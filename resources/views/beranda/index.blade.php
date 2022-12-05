@@ -7,7 +7,7 @@
 			<div class="content">
 			<h1>selamat datang di beranda sistem perangkingan daerah</h1>
 				<p>Metode yang digunakan adalah Logika fuzzy Database Model Tahani</p>
-				<button> <a href="{{ url('/data/create') }}">Mulai</a> </button>
+				<button> <a href="{{ url('/data') }}">Mulai</a> </button>
 			</div>
 			<div class="pic"></div>
 		</div>
