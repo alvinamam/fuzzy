@@ -19,7 +19,11 @@ class DataController extends Controller
     {
         $datas = Data::all();
         //return $data;
-        return view('data.index',compact('datas'));
+        $ringan = Ringan::all();
+        $sedang = Sedang::all();
+        $berat = Berat::all();
+        $query = Berat::orderBy('rata', 'desc')->get();
+        return view('data.index',compact('datas', 'ringan', 'sedang', 'berat'));
     }
 
     /**
@@ -60,7 +64,7 @@ class DataController extends Controller
             'ketidaktersediaansarana' => 'required',
         ]);
         //return $request;
-        Data::create([
+       $data = Data::create([
             'RT' => $request->RT,
             'ketidakteraturan' => $request->ketidakteraturan,
             'luaskawasan' => $request->luaskawasan,
@@ -79,10 +83,8 @@ class DataController extends Controller
             'ketidaktersediaanprasarana' => $request->ketidaktersediaanprasarana,
             'ketidaktersediaansarana' => $request->ketidaktersediaansarana,
 
-
-
-
         ]);
+        $this->main1($data);
         return redirect('/data');
     }
 
@@ -172,7 +174,12 @@ class DataController extends Controller
     {
         //return $id;
         Data::destroy($id);
+        Ringan::where("data_id", $id)->delete();
+        Sedang::where("data_id", $id)->delete();
+        Berat::where("data_id",$id)->delete();
+        
         return redirect('/data');
+
     }
 
     public function fuzzyfikasi_turun($x)
@@ -234,7 +241,7 @@ class DataController extends Controller
         return $hasil;
         $datas = Data::all(); // mengambil data
         foreach ($datas as $data){}
-        $ringan_ketidakteraturan = $this->fuzzyfikasi_turun($data->ketidakteraturan); //memasukan data
+        $ringan_ketidakteraturan = $this->fuzzyfikasi_turun($data->ketidakteraturan); 
         $sedang_ketidakteraturan = $this->fuzzyfikasi_segitiga($data->ketidakteraturan);
         $berat_ketidakteraturan= $this->fuzzyfikasi_naik($data->ketidakteraturan);
 
@@ -318,7 +325,7 @@ class DataController extends Controller
     public function main1(Data $data)
     {
         //return $data;
-        $ringan_ketidakteraturan = $this->fuzzyfikasi_turun($data->ketidakteraturan); //memasukan data
+        $ringan_ketidakteraturan = $this->fuzzyfikasi_turun($data->ketidakteraturan); 
         $sedang_ketidakteraturan = $this->fuzzyfikasi_segitiga($data->ketidakteraturan);
         $berat_ketidakteraturan= $this->fuzzyfikasi_naik($data->ketidakteraturan);
 

@@ -100,8 +100,7 @@ nav .button:hover{
 	font-weight: bold;
     transition: box-shadow 0.25s, color 0.25s, transform 0.25s;
 	margin-top: 40px;
-	border-radius: 10px;
-		
+	border-radius: 10px;		
 }
 #head .content button:hover{
     box-shadow: 0 0.5em 0.5em rgba(255,174,0,1.00);
