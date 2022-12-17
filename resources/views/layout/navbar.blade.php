@@ -5,7 +5,10 @@
             <li><a href="{{ url('data') }}">Data</a></li>
             <li><a href="{{ url('kontak')}}">Kontak</a></li>
             <li><a href="{{ url('tentang')}}">Tentang</a></li>
+            @if (Auth::user())
+                <a type="button" href="{{ url('/logout') }}" class="btn btn-warning">Keluar</a>
+            @endif
         </ul>
-            <button><a href=" {{url('login')}} ">login</a></button>
+            
             
     </nav>

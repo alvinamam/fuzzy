@@ -3,6 +3,9 @@
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\DataController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,10 +21,12 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-// Route::get('/registrasi', [RegisterController::class, 'index']);
-// Route::get('/login', [LoginController::class, 'index']);
-
-
+Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/register', [RegisterController::class, 'store']);
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login', [LoginController::class, 'store']);
+Route::group(( ['middleware' => 'auth']), function(){
+Route::get('logout', [LoginController::class, 'logout']);
 Route::get('/beranda', [BerandaController::class, 'index']);
 Route::get('/kontak', function () {
 return view('kontak.index');
@@ -35,14 +40,9 @@ Route::post('/data', [DataController::class, 'store']);
 Route::get('/data/{id}/edit', [DataController::class, 'edit']);
 Route::put('/data/{id}', [DataController::class, 'update']);
 Route::delete('/data/{id}', [DataController::class, 'destroy']);
+});
+
 //Route::get('/test/{x}', [DataController::class, 'fuzzyfikasi_naik']);
-Route::get('fuzzy-main/{data}', [DataController::class,'main1']);
-Route::get('fuzzyfikasi', [DataController::class, 'indexHasil']);
-Route::get('query', [DataController::class, 'indexQuery']);
-Route::get('/login', function () {
-   return view('login.index');
-    });
-Route::get('/register', function () {
-   return view('register.index');
-    });
-     
+//Route::get('fuzzy-main/{data}', [DataController::class,'main1']);
+//Route::get('fuzzyfikasi', [DataController::class, 'indexHasil']);
+//Route::get('query', [DataController::class, 'indexQuery']);

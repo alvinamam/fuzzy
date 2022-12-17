@@ -23,7 +23,8 @@ class DataController extends Controller
         $sedang = Sedang::all();
         $berat = Berat::all();
         $query = Berat::orderBy('rata', 'desc')->get();
-        return view('data.index',compact('datas', 'ringan', 'sedang', 'berat'));
+        //return $query;
+        return view('data.index',compact('query', 'datas', 'ringan', 'sedang', 'berat'));
     }
 
     /**
@@ -121,6 +122,7 @@ class DataController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
         //return $request;
         $request->validate([
             'RT' => 'required',
@@ -161,6 +163,9 @@ class DataController extends Controller
             'ketidaktersediaanprasarana' => $request->ketidaktersediaanprasarana,
             'ketidaktersediaansarana' => $request->ketidaktersediaansarana,
         ]);
+        $data = Data::find($id);
+        
+        $this->mainedit($data);
         return redirect('/data');
     }
 
@@ -228,9 +233,8 @@ class DataController extends Controller
         }
         return $hasil;
     }
-    public function main()
-     
 
+    public function main()
     {
         $berat = $this->fuzzyfikasi_naik(45);
         $sedang = $this->fuzzyfikasi_segitiga(45);
@@ -465,5 +469,135 @@ $rata = ($berat_ketidakteraturan + $berat_luaskawasan + $berat_persyaratanteknis
     {
         $berat = Berat::orderBy('rata', 'desc')->get();
         return view('data/query', compact('berat'));
+    }
+
+    public function mainedit(Data $data){
+        $ringan_ketidakteraturan = $this->fuzzyfikasi_turun($data->ketidakteraturan); 
+        $sedang_ketidakteraturan = $this->fuzzyfikasi_segitiga($data->ketidakteraturan);
+        $berat_ketidakteraturan= $this->fuzzyfikasi_naik($data->ketidakteraturan);
+
+        $ringan_luaskawasan = $this->fuzzyfikasi_turun($data->luaskawasan);
+        $sedang_luaskawasan = $this->fuzzyfikasi_segitiga($data->luaskawasan);
+        $berat_luaskawasan= $this->fuzzyfikasi_naik($data->luaskawasan);
+        
+        $ringan_persyaratanteknis = $this->fuzzyfikasi_turun($data->persyaratanteknis);
+        $sedang_persyaratanteknis = $this->fuzzyfikasi_segitiga($data->persyaratanteknis);
+        $berat_persyaratanteknis= $this->fuzzyfikasi_naik($data->persyaratanteknis);
+
+        $ringan_keterjangkauan = $this->fuzzyfikasi_turun($data->keterjangkauan);
+        $sedang_keterjangkauan = $this->fuzzyfikasi_segitiga($data->keterjangkauan);
+        $berat_keterjangkauan= $this->fuzzyfikasi_naik($data->keterjangkauan);
+
+        $ringan_kualitaspermukaan = $this->fuzzyfikasi_turun($data->kualitaspermukaan);
+        $sedang_kualitaspermukaan = $this->fuzzyfikasi_segitiga($data->kualitaspermukaan);
+        $berat_kualitaspermukaan= $this->fuzzyfikasi_naik($data->kualitaspermukaan);
+
+        $ringan_ketersediaanaksesair = $this->fuzzyfikasi_turun($data->ketersediaanaksesair);
+        $sedang_ketersediaanaksesair = $this->fuzzyfikasi_segitiga($data->ketersediaanaksesair);
+        $berat_ketersediaanaksesair= $this->fuzzyfikasi_naik($data->ketersediaanaksesair);
+
+        $ringan_tidakterpenuhinyaair = $this->fuzzyfikasi_turun($data->tidakterpenuhinyaair);
+        $sedang_tidakterpenuhinyaair = $this->fuzzyfikasi_segitiga($data->tidakterpenuhinyaair);
+        $berat_tidakterpenuhinyaair= $this->fuzzyfikasi_naik($data->tidakterpenuhinyaair);
+
+        $ringan_ketidakmampuan = $this->fuzzyfikasi_turun($data->ketidakmampuan);
+        $sedang_ketidakmampuan = $this->fuzzyfikasi_segitiga($data->ketidakmampuan);
+        $berat_ketidakmampuan= $this->fuzzyfikasi_naik($data->ketidakmampuan);
+
+        $ringan_ketidaktersediaandrainase = $this->fuzzyfikasi_turun($data->ketidaktersediaandrainase);
+        $sedang_ketidaktersediaandrainase = $this->fuzzyfikasi_segitiga($data->ketidaktersediaandrainase);
+        $berat_ketidaktersediaandrainase= $this->fuzzyfikasi_naik($data->ketidaktersediaandrainase);
+
+        $ringan_kualitaskonstruksi = $this->fuzzyfikasi_turun($data->kualitaskonstruksi);
+        $sedang_kualitaskonstruksi = $this->fuzzyfikasi_segitiga($data->kualitaskonstruksi);
+        $berat_kualitaskonstruksi= $this->fuzzyfikasi_naik($data->kualitaskonstruksi);
+
+        $ringan_sistempengolahanair = $this->fuzzyfikasi_turun($data->sistempengolahanair);
+        $sedang_sistempengolahanair = $this->fuzzyfikasi_segitiga($data->sistempengolahanair);
+        $berat_sistempengolahanair= $this->fuzzyfikasi_naik($data->sistempengolahanair);
+
+        $ringan_sapraspengolahanair = $this->fuzzyfikasi_turun($data->sapraspengolahanair);
+        $sedang_sapraspengolahanair = $this->fuzzyfikasi_segitiga($data->sapraspengolahanair);
+        $berat_sapraspengolahanair= $this->fuzzyfikasi_naik($data->sapraspengolahanair);
+
+        $ringan_sapraspersampahan = $this->fuzzyfikasi_turun($data->sapraspersampahan);
+        $sedang_sapraspersampahan = $this->fuzzyfikasi_segitiga($data->sapraspersampahan);
+        $berat_sapraspersampahan= $this->fuzzyfikasi_naik($data->sapraspersampahan);
+
+        $ringan_sistempengelolaan = $this->fuzzyfikasi_turun($data->sistempengelolaan);
+        $sedang_sistempengelolaan = $this->fuzzyfikasi_segitiga($data->sistempengelolaan);
+        $berat_sistempengelolaan= $this->fuzzyfikasi_naik($data->sistempengelolaan);
+
+        $ringan_ketidaktersediaanprasarana = $this->fuzzyfikasi_turun($data->ketidaktersediaanprasarana);
+        $sedang_ketidaktersediaanprasarana = $this->fuzzyfikasi_segitiga($data->ketidaktersediaanprasarana);
+        $berat_ketidaktersediaanprasarana= $this->fuzzyfikasi_naik($data->ketidaktersediaanprasarana);
+
+        $ringan_ketidaktersediaansarana = $this->fuzzyfikasi_turun($data->ketidaktersediaansarana);
+        $sedang_ketidaktersediaansarana = $this->fuzzyfikasi_segitiga($data->ketidaktersediaansarana);
+        $berat_ketidaktersediaansarana= $this->fuzzyfikasi_naik($data->ketidaktersediaansarana);
+
+        Ringan::where('data_id',$data->id)->update([
+            'data_id' => $data->id,
+            'ketidakteraturan' => $ringan_ketidakteraturan ,
+            'luaskawasan' => $ringan_luaskawasan,
+            'persyaratanteknis' => $ringan_persyaratanteknis,
+            'keterjangkauan' => $ringan_keterjangkauan,
+            'kualitaspermukaan' => $ringan_kualitaspermukaan,
+            'ketersediaanaksesair' => $ringan_ketersediaanaksesair,
+            'tidakterpenuhinyaair' => $ringan_tidakterpenuhinyaair,
+            'ketidakmampuan' => $ringan_ketidakmampuan,
+            'ketidaktersediaandrainase' => $ringan_ketidaktersediaandrainase,
+            'kualitaskonstruksi' => $ringan_kualitaskonstruksi,
+            'sistempengolahanair' => $ringan_sistempengolahanair,
+            'sapraspengolahanair' => $ringan_sapraspengolahanair,
+            'sapraspersampahan' => $ringan_sapraspersampahan,
+            'sistempengelolaan' => $ringan_sistempengelolaan,
+            'ketidaktersediaanprasarana' => $ringan_ketidaktersediaanprasarana,
+            'ketidaktersediaansarana' => $ringan_ketidaktersediaansarana,
+        ]);
+
+        Sedang::where('data_id',$data->id)->update([
+            'data_id' => $data->id,
+            'ketidakteraturan' => $sedang_ketidakteraturan,
+            'luaskawasan' => $sedang_luaskawasan,
+            'persyaratanteknis' => $sedang_persyaratanteknis,
+            'keterjangkauan' => $sedang_keterjangkauan,
+            'kualitaspermukaan' => $sedang_kualitaspermukaan,
+            'ketersediaanaksesair' => $sedang_ketersediaanaksesair,
+            'tidakterpenuhinyaair' => $sedang_tidakterpenuhinyaair,
+            'ketidakmampuan' => $sedang_ketidakmampuan,
+            'ketidaktersediaandrainase' => $sedang_ketidaktersediaandrainase,
+            'kualitaskonstruksi' => $sedang_kualitaskonstruksi,
+            'sistempengolahanair' => $sedang_sistempengolahanair,
+            'sapraspengolahanair' => $sedang_sapraspengolahanair,
+            'sapraspersampahan' => $sedang_sapraspersampahan,
+            'sistempengelolaan' => $sedang_sistempengelolaan,
+            'ketidaktersediaanprasarana' => $sedang_ketidaktersediaanprasarana,
+            'ketidaktersediaansarana' => $sedang_ketidaktersediaansarana,
+        ]);
+
+$rata = ($berat_ketidakteraturan + $berat_luaskawasan + $berat_persyaratanteknis + $berat_keterjangkauan + $berat_kualitaspermukaan + $berat_ketersediaanaksesair + $berat_tidakterpenuhinyaair + $berat_ketidakmampuan + $berat_ketidaktersediaandrainase + $berat_kualitaskonstruksi + $berat_sistempengolahanair + $berat_sapraspengolahanair + $berat_sapraspersampahan + $berat_sistempengelolaan + $berat_ketidaktersediaanprasarana + $berat_ketidaktersediaansarana) / 16;
+
+        Berat::where('data_id',$data->id)->update([
+            'data_id' => $data->id,
+            'ketidakteraturan' => $berat_ketidakteraturan,
+            'luaskawasan' => $berat_luaskawasan,
+            'persyaratanteknis' => $berat_persyaratanteknis,
+            'keterjangkauan' => $berat_keterjangkauan,
+            'kualitaspermukaan' => $berat_kualitaspermukaan,
+            'ketersediaanaksesair' => $berat_ketersediaanaksesair,
+            'tidakterpenuhinyaair' => $berat_tidakterpenuhinyaair,
+            'ketidakmampuan' => $berat_ketidakmampuan,
+            'ketidaktersediaandrainase' => $berat_ketidaktersediaandrainase,
+            'kualitaskonstruksi' => $berat_kualitaskonstruksi,
+            'sistempengolahanair' => $berat_sistempengolahanair,
+            'sapraspengolahanair' => $berat_sapraspengolahanair,
+            'sapraspersampahan' => $berat_sapraspersampahan,
+            'sistempengelolaan' => $berat_sistempengelolaan,
+            'ketidaktersediaanprasarana' => $berat_ketidaktersediaanprasarana,
+            'ketidaktersediaansarana' => $berat_ketidaktersediaansarana,
+            'rata' => $rata
+        ]);
+        return redirect()->back();
     }
 }

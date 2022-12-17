@@ -213,7 +213,6 @@
                     <thead class="table-light">
                      <th>No</th>
                         <th>RT</th>
-                        <th>Rata-Rata</th>
                         <th>Ketidakteraturan</th>
                         <th>LuasKawasan</th>
                         <th>persyaratanteknis</th>
@@ -230,7 +229,7 @@
                         <th>sistempengelolaan</th>
                         <th>ketidaktersediaanprasarana</th>
                         <th>ketidaktersediaansarana</th>
-                        
+                        <th>Rata-Rata</th>
                     </thead>
                     <tbody class="table-light">
                         @foreach ($berat as $data)
@@ -238,7 +237,6 @@
                         <tr>
                             <td>{{$loop->iteration}}</td>
                             <td>{{$data->data->RT}}</td> 
-                            <td>{{$data->rata}}</td>
                             <td>{{$data->ketidakteraturan}}</td>
                             <td>{{$data->luaskawasan}}</td>
                             <td>{{$data->persyaratanteknis}}</td>
@@ -255,10 +253,10 @@
                             <td>{{$data->sistempengelolaan}}</td>
                             <td>{{$data->ketidaktersediaanprasarana}}</td>
                             <td>{{$data->ketidaktersediaansarana}}</td>
-                            <td>
+                            <td>{{$data->rata}}</td>
                                 
                                
-                            </td>
+                            
 
                         </tr>
                      @endforeach
@@ -285,23 +283,16 @@
                      <th>No</th>
                         <th>RT</th>
                         <th>Rata-Rata</th>
-                        <th>aksi</th>
+                        
                     </thead>
                     <tbody class="table-light">
-                        @foreach ($berat as $data)
+                        @foreach ($query as $data)
                         
                         <tr>
                             <td>{{$loop->iteration}}</td>
                             <td>{{$data->data->RT}}</td> 
                             <td>{{$data->rata}}</td>
-                            <td>
-                                
-                                <form action="{{ url('/data/'.$data->id) }}" method="post">
-                                    @csrf
-                                    @method('delete')
-                                    <button type="submit" class="btn btn-danger">DELETE</button>
-                                </form>
-                            </td>
+                           
 
                         </tr>
                      @endforeach

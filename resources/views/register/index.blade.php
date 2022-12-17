@@ -127,39 +127,53 @@ form{
   <body class="text-center">
     
 <main class="form-signin w-100 m-auto">
-  <form>
+  @if(session()->has('success'))
+    <div class="alert alert-success" role="alert">
+       {{ session('success') }}
+    </div>
+  @endif
+  @if ($errors->any())
+    @foreach ($errors->all() as $item)
+      <div class="alert alert-warning" role="alert">
+        {{ $item }}
+      </div>
+    @endforeach
+  @endif
+  <form action="{{url('/register')}}" method="POST">
+    @csrf
     <img class="mb-4" src="https://img.icons8.com/external-photo3ideastudio-flat-photo3ideastudio/2x/external-building-public-service-photo3ideastudio-flat-photo3ideastudio.png" alt="" width="72" height="57">
     <h1 class="h3 mb-3 fw-normal">Registrasi</h1>
 
     <div class="form-floating">
-      <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <input type="text" class="form-control" id="floatingInput" name="nama">
       <label for="floatingInput">Nama Lengkap</label>
     </div>
     <div class="form-floating">
-      <select type="password" class="form-control" id="floatingPassword" placeholder="Password">
-        <option value="">laki-laki</option>
-        <option value="">Perempuan</option>
+      <select type="password" class="form-control" id="floatingPassword" name="jenis_kelamin">
+        <option value=" ">--Pilih Satu--</option>
+        <option value="laki-laki">laki-laki</option>
+        <option value="perempuan">Perempuan</option>
       </select>
       <label for="floatingPassword">Jenis Kelamin</label>
     </div>
     <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <input type="email" class="form-control" id="floatingInput" name="email">
       <label for="floatingInput">Email address</label>
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <input type="password" class="form-control" id="floatingInput" name="password">
       <label for="floatingInput">Password</label>
     </div>
 
     
-    <button class="w-100 btn btn-lg btn-primary" type="submit">Masuk</button>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Daftar</button>
     <div class="col mt-2">
     <a href="{{ url('/login') }}">sudah ada akun</a>
     </div>
     <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
   </form>
 </main>
-
+ 
 
     
   </body>
